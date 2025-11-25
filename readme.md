@@ -10,11 +10,11 @@ A simultaneous enhancement of accuracy and diversity of predictions remains a ch
 
 ## Requirements
 You can build the dependencies by executing the following command
-'''
+```
 conda create -n FM python=3.9
 source activate FM
 pip install -r requirement.txt
-'''
+```
 
 ## Dataset
 Two public datasets: LIDC and ISIC Subset are implemented in this work. You can download the datasets in the following links:
@@ -25,27 +25,27 @@ The corresponding paths of the datasets should be modified in `metadata_managr.p
 
 ## Training Procudure
 - Step 1: Train Gaussian Truncation Representation for both datasets
-  '''
+  ```
   python train_GTR.py --what LIDC --epochs 1000 --betchsize 256 --save_model True --save_model_step 50
   python train_GTR.py --what isic3_style_concat --epochs 400 --batchsize 8 --save_model True --save_model_step 50
-  '''
+  ```
 - Step 2: Train Segmentation Flow Matching based on the frozen GTR
-  '''
+  ```
   python train_prior_LIDC.py
   python train_prior_ISIC.py
-  '''
+  ```
 
 Note: The GPU memory consumption of ISIC Subset is 24198MiB (23.63GiB) even with a batchsize = 1. Therefore, CUDA may appear to be out-of-memory when too much memory is reserved. Feel free to use `torch.utils.checkpoint` to reduce the GPU memory comsumption.
-'''
+```
 pred = model(image) # Original forward
 pred = torch.utils.checkpoint(model, image) # Forward with lower memory comsumption
-'''
+```
 
 ## Testing Procedure
-'''
+```
 python test_prior_LIDC.py
 python test_prior_ISIC.py
-'''
+```
 
 By visualizing the predictions, you can obtain a series of predictions with both high accuracy and diversity, while the fidelity and plausibility is enhanced simultaneously.
 ![LIDC Dataset](/fig/pred.png)
@@ -58,11 +58,11 @@ By visualizing the predictions, you can obtain a series of predictions with both
 
 ## Citations
 You can cite this paper with the following bibtex code if you find this work helpful:
-'''
+```
 @article{li2025ambiguity,
   title={Ambiguity-aware Truncated Flow Matching for Ambiguous Medical Image Segmentation},
   author={Li, Fanding and Li, Xiangyu and Su, Xianghe and Qiu, Xingyu and Dong, Suyu and Wang, Wei and Wang, Kuanquan and Luo, Gongning and Li, Shuo},
   journal={arXiv preprint arXiv:2511.06857},
   year={2025}
 }
-'''
+```
