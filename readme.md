@@ -17,11 +17,11 @@ pip install -r requirement.txt
 ```
 
 ## Dataset
-Two public datasets: LIDC and ISIC Subset are implemented in this work. You can download the datasets in the following links:
+Two public datasets: LIDC and ISIC Subset are implemented in this work. You can download the datasets from the following links:
 - [LIDC Dataset](https://drive.google.com/drive/folders/1xKfKCQo8qa6SAr3u7qWNtQjIphIrvmd5) as preprocessed by @Stefan Knegt
 - [ISIC Subset](https://drive.google.com/file/d/1m7FdNldGqGyqw2L9GX8HDrHDId3kExtH/view?usp=sharing) as preprocessed by @killanzepf
 
-The corresponding paths of the datasets should be modified in `metadata_managr.py`
+Please modify the dataset paths accordingly in `metadata_managr.py`
 
 ## Training Procudure
 - Step 1: Train Gaussian Truncation Representation for both datasets
@@ -35,7 +35,7 @@ The corresponding paths of the datasets should be modified in `metadata_managr.p
   python train_prior_ISIC.py
   ```
 
-Note: The GPU memory consumption of ISIC Subset is 24198MiB (23.63GiB) even with a batchsize = 1. Therefore, CUDA may appear to be out-of-memory when too much memory is reserved. Feel free to use `torch.utils.checkpoint` to reduce the GPU memory comsumption.
+Note: The GPU memory consumption for ISIC Subset is `24198MiB (23.63GiB)` even with `batchsize=1`. `CUDA out-of-memory` errors may occur when too much memory is reserved. You may use `torch.utils.checkpoint` to reduce memory usage:
 ```
 pred = model(image) # Original forward
 pred = torch.utils.checkpoint(model, image) # Forward with lower memory comsumption
@@ -47,17 +47,17 @@ python test_prior_LIDC.py
 python test_prior_ISIC.py
 ```
 
-By visualizing the predictions, you can obtain a series of predictions with both high accuracy and diversity, while the fidelity and plausibility is enhanced simultaneously.
+Visualization of the predictions will show that ATFM produces a series of results with both high accuracy and high diversity, while fidelity and plausibility are simultaneously improved.
 ![LIDC Dataset](/fig/pred.png)
 ![ISIC Subset](/fig/pred1.png)
 
 ## Acknowledgements
-- We thank [@killanzepf](https://github.com/kilianzepf/conditioned_uncertain_segmentation) for the preprocessed dataset and GTR baseline.
+- We thank [@killanzepf](https://github.com/kilianzepf/conditioned_uncertain_segmentation) for the preprocessed dataset and the GTR baseline.
 - We thank [@aleksandrinvictor](https://github.com/aleksandrinvictor/flow-matching) for the Flow Matching baseline.
 - We thank [@Stefan Knegt](https://github.com/stefanknegt/Probabilistic-Unet-Pytorch) for the preprocessed dataset.
 
 ## Citations
-You can cite this paper with the following bibtex code if you find this work helpful:
+If you find this work helpful, please cite:
 ```
 @article{li2025ambiguity,
   title={Ambiguity-aware Truncated Flow Matching for Ambiguous Medical Image Segmentation},
@@ -66,3 +66,4 @@ You can cite this paper with the following bibtex code if you find this work hel
   year={2025}
 }
 ```
+The AAAI proceedings citation will be provided once available.
