@@ -21,7 +21,7 @@ Two public datasets: LIDC and ISIC Subset are implemented in this work. You can 
 - [LIDC Dataset](https://drive.google.com/drive/folders/1xKfKCQo8qa6SAr3u7qWNtQjIphIrvmd5) as preprocessed by @Stefan Knegt
 - [ISIC Subset](https://drive.google.com/file/d/1m7FdNldGqGyqw2L9GX8HDrHDId3kExtH/view?usp=sharing) as preprocessed by @killanzepf
 
-Please modify the dataset paths accordingly in `metadata_managr.py`
+Please modify the dataset paths accordingly in `metadata_manager.py`
 
 ## Training Procudure
 - Step 1: Train Gaussian Truncation Representation for both datasets
