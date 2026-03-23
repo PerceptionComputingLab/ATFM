@@ -59,11 +59,13 @@ Visualization of the predictions will show that ATFM produces a series of result
 ## Citations
 If you find this work helpful, please cite:
 ```
-@article{li2025ambiguity,
-  title={Ambiguity-aware Truncated Flow Matching for Ambiguous Medical Image Segmentation},
+@inproceedings{li2026ambiguity,
+  title={Ambiguity-aware truncated flow matching for ambiguous medical image segmentation},
   author={Li, Fanding and Li, Xiangyu and Su, Xianghe and Qiu, Xingyu and Dong, Suyu and Wang, Wei and Wang, Kuanquan and Luo, Gongning and Li, Shuo},
-  journal={arXiv preprint arXiv:2511.06857},
-  year={2025}
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={40},
+  number={8},
+  pages={6082--6090},
+  year={2026}
 }
 ```
-The AAAI proceedings citation will be provided once available.
