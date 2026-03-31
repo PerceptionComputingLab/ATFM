@@ -26,7 +26,7 @@ Please modify the dataset paths accordingly in `metadata_manager.py`
 ## Training Procudure
 - Step 1: Train Gaussian Truncation Representation for both datasets
   ```
-  python train_GTR.py --what LIDC --epochs 1000 --betchsize 256 --save_model True --save_model_step 50
+  python train_GTR.py --what LIDC --epochs 1000 --batchsize 256 --save_model True --save_model_step 50
   python train_GTR.py --what isic3_style_concat --epochs 400 --batchsize 8 --save_model True --save_model_step 50
   ```
 - Step 2: Train Segmentation Flow Matching based on the frozen GTR
